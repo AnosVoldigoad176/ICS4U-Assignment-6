@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+@SuppressWarnings({"SpellCheckingInspection"})
+
 public class Main {
 
     // Reading in / printing out file
@@ -13,8 +15,7 @@ public class Main {
 
     // Read the text file into array and split by word
     public static String[] readTxtToArrayByWord(String content) {
-        String[] words = content.split("\\s");
-        return words;
+        return content.split("\\s");
     }
 
     public static void main(String[] args) throws FileNotFoundException {
