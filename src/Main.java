@@ -7,8 +7,7 @@ public class Main {
     // Reading in / printing out file
     public static String readAndPrintFile(String fileName) throws FileNotFoundException {
         String content = new Scanner(new File(fileName)).useDelimiter("\\Z").next();
-        System.out.println(content);
-        return content;
+        return content.toLowerCase();
     }
 
     // Read the text file into array and split by word
