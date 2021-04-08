@@ -7,6 +7,7 @@ public class Main {
     // Reading in / printing out file
     public static String readAndPrintFile(String fileName) throws FileNotFoundException {
         String content = new Scanner(new File(fileName)).useDelimiter("\\Z").next();
+        System.out.println(content);
         return content.toLowerCase();
     }
 
@@ -47,7 +48,7 @@ public class Main {
                     System.out.println("Please enter a file name");
                     fileName = s.nextLine();
                     String content = readAndPrintFile(fileName);
-                    System.out.println(content);
+                    readAndPrintFile(fileName);
                     readTxtToArrayByWord(content);
                     System.out.println();
                     System.out.println("File has been read in array by word!");
