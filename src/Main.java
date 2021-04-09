@@ -14,37 +14,20 @@ import java.util.Scanner;
 public class Main {
 
     // Print out original file, return lower case content
-    public static String readAndPrintFile(String fileName) throws FileNotFoundException {
+    public static String readPrintFileNoPunc(String fileName) throws FileNotFoundException {
         String content = new Scanner(new File(fileName)).useDelimiter("\\Z").next();
         System.out.println(content);
-        return content.toLowerCase();
-    }
-
-    // Remove punctuation of content
-    public static String removePunctuation(String content) {
-        return content.replaceAll("[\\p{P}&&[^\u0027]]", "");
-    }
-
-    // Read the text file into array and split by word
-    public static String[] readTxtToArrayByWord(String content) {
-        String[] words;
-        words = content.split("\\s");
-
-//        Print out array to debug
-//        for(int i = 0; i < words.length; i++) {
-//            System.out.println(words[i]);
-//        }
-
-        return words;
+        return content.toLowerCase().replaceAll("[\\p{P}&&[^\u0027]]", "");
     }
 
     // Sort array alphabetically
-    public static String[] sortWordAlphabetically(String[] words) {
+    public static String[] contentToSortedWordArray(String content) {
+        String[] words = content.split("\\s");
         Arrays.sort(words);
-        System.out.println(Arrays.toString(words));
-        for(int i = 0; i < words.length; i++) {
-            System.out.println(words[i]);
-        }
+//        System.out.println(Arrays.toString(words));
+//        for(int i = 0; i < words.length; i++) {
+//            System.out.println(words[i]);
+//        }
         return words;
     }
 
@@ -61,11 +44,12 @@ public class Main {
         String fileName;
         fileName = loadFile.nextLine();
         System.out.println();
-        String content = removePunctuation(readAndPrintFile(fileName));
-        String[] words = readTxtToArrayByWord(content);
-        readAndPrintFile(fileName);
-        readTxtToArrayByWord(content);
-        sortWordAlphabetically(words);
+
+        // Handle file
+        String content = readPrintFileNoPunc(fileName);
+        readPrintFileNoPunc(fileName);
+        contentToSortedWordArray(content);
+        String[] words = contentToSortedWordArray(content);
         System.out.println();
 
         // Menu handle

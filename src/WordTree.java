@@ -12,8 +12,8 @@ public class WordTree {
         WordNode left;
         WordNode right;
         WordNode(String word, int counter) {
-            word = word;
-            counter = counter;
+            this.word = word;
+            this.counter = counter;
         }
     }
 
@@ -38,6 +38,27 @@ public class WordTree {
         }
     }  // end treeContains()
 
+    WordNode sortedArrayToBST(String[] words, int start, int end) {
+
+        /* Base Case */
+        if (start > end) {
+            return null;
+        }
+
+        /* Get the middle element and make it root */
+        int mid = (start + end) / 2;
+        WordNode node = new WordNode(words[mid], 0);
+
+        /* Recursively construct the left subtree and make it
+         left child of root */
+        node.left = sortedArrayToBST(words, start, mid - 1);
+
+        /* Recursively construct the right subtree and make it
+         right child of root */
+        node.right = sortedArrayToBST(words, mid + 1, end);
+
+        return node;
+    }
 
     private static void treeList(WordNode node) {
         if ( node != null ) {
