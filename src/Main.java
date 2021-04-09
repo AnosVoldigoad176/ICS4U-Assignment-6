@@ -15,9 +15,7 @@ public class Main {
     private static int totalWordsCounter;
     private static WordNode root;
 
-    private static void plusCount(WordNode node) {
-        node.counter += 1;
-    }
+
 
     /**
      * Method Name: contentToWordsBST
@@ -45,6 +43,23 @@ public class Main {
                 treeInsert(word);  // Add string to the tree.
             }
         }  // end while
+    }
+
+    /**
+     * Method Name: plusCount
+     *
+     * @param node Node
+     *             Return: N/A
+     *             Data Type: Void
+     *             Dependencies: N/A
+     *             Throws/Exception: N/A
+     * @author Duc Anh Vu
+     * Creation Date: April 9, 2021
+     * Modified Date: April 9, 2021
+     * Description: Count in node plus by one everytime duplicate insert
+     */
+    private static void plusCount(WordNode node) {
+        node.counter += 1;
     }
 
     /**
