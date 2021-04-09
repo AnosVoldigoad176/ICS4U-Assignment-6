@@ -4,10 +4,12 @@
  * Description: Analyze text file using ADT concept.
  */
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
+
+@SuppressWarnings("ResultOfMethodCallIgnored")
 
 public class Main {
 
@@ -27,14 +29,24 @@ public class Main {
     public static String[] readTxtToArrayByWord(String content) {
         String[] words;
         words = content.split("\\s");
+
+//        Print out array to debug
+//        for(int i = 0; i < words.length; i++) {
+//            System.out.println(words[i]);
+//        }
+
+        return words;
+    }
+
+    // Sort array alphabetically
+    public static String[] sortWordAlphabetically(String[] words) {
+        Arrays.sort(words);
+        System.out.println(Arrays.toString(words));
         for(int i = 0; i < words.length; i++) {
             System.out.println(words[i]);
         }
         return words;
     }
-
-
-
 
     public static void main(String[] args) throws FileNotFoundException {
 
@@ -50,8 +62,10 @@ public class Main {
         fileName = loadFile.nextLine();
         System.out.println();
         String content = removePunctuation(readAndPrintFile(fileName));
+        String[] words = readTxtToArrayByWord(content);
         readAndPrintFile(fileName);
         readTxtToArrayByWord(content);
+        sortWordAlphabetically(words);
         System.out.println();
 
         // Menu handle
