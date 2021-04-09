@@ -15,8 +15,6 @@ public class Main {
     private static int totalWordsCounter;
     private static WordNode root;
 
-
-
     /**
      * Method Name: contentToWordsBST
      *
