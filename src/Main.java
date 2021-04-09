@@ -35,9 +35,9 @@ public class Main {
     public static void contentToWordsBST(String content) {
         String word;
         while (true) {
-            int divide = content.indexOf(' ') + 1;
-            word = content.substring(0, divide).trim();
-            content = content.substring(divide);
+            int divided = content.indexOf(' ') + 1;
+            word = content.substring(0, divided).trim();
+            content = content.substring(divided);
             if (word.length() == 0)
                 break;
             if (treeContains(root, word, 0)) {
@@ -49,16 +49,15 @@ public class Main {
 
     /**
      * Method Name: treeInsert
-     *
-     * @param word Word to insert to tree
-     *             Return: N/A
-     *             Data Type: Void
-     *             Dependencies: N/A
-     *             Throws/Exception: N/A
      * @author Kyle Mckay
      * Creation Date:
      * Modified Date: April 9, 2021
      * Description: Insert all word into tree
+     * @param word Word to insert to tree
+     * Return: N/A
+     * Data Type: Void
+     * Dependencies: N/A
+     * Throws/Exception: N/A
      */
     private static void treeInsert(String word) {
         if (root == null) {
@@ -72,7 +71,8 @@ public class Main {
                 if (runner.left == null) {
                     runner.left = new WordNode(word);
                     return;
-                } else
+                }
+                else
                     runner = runner.left;
             } else {
                 if (runner.right == null) {
@@ -87,18 +87,17 @@ public class Main {
 
     /**
      * Method Name: treeContains
-     *
-     * @param root   Root of the tree
-     * @param word   Word to search
+     * @author Kyle Mckay
+     * Creation Date:
+     * Modified Date: April 9, 2021
+     * Description: Check if the tree contain something and show counter as well
+     * @param root Root of the tree
+     * @param word Word to search
      * @param Search Search = 1 mean found, = 0 mean not found
      * @return Total number occurence of the input word
      * Data Type: Boolean
      * Dependencies: N/A
      * Throws/Exception: N/A
-     * @author Kyle Mckay
-     * Creation Date:
-     * Modified Date: April 9, 2021
-     * Description: Check if the tree contain something and show counter as well
      */
     public static boolean treeContains(WordNode root, String word, int Search) {
         if (root == null) {
@@ -123,16 +122,15 @@ public class Main {
 
     /**
      * Method Name: treeList
-     *
-     * @param node A node of the tree as start point
-     *             Return: N/A
-     *             Data Type: Void
-     *             Dependencies: N/A
-     *             Throws/Exception: N/A
      * @author Kyle Mckay
      * Creation Date:
      * Modified Date: April 9, 2021
      * Description: Print the tree in order
+     * @param node A node of the tree as start point
+     * Return: N/A
+     * Data Type: Void
+     * Dependencies: N/A
+     * Throws/Exception: N/A
      */
     public static void treeList(WordNode node) {
         if (node != null) {
@@ -151,16 +149,15 @@ public class Main {
 
     /**
      * Method Name: countTotalNodes
-     *
+     * @author Duc Anh Vu
+     * Creation Date: April 6, 2021
+     * Modified Date: April 9, 2021
+     * Description: Count total nodes inside a tree
      * @param node A node of the tree as start point
      * @return Total node
      * Data Type: Integer
      * Dependencies: N/A
      * Throws/Exception: N/A
-     * @author Duc Anh Vu
-     * Creation Date: April 6, 2021
-     * Modified Date: April 9, 2021
-     * Description: Count total nodes inside a tree
      */
     public static int countTotalNodes(WordNode node) {
         if (node == null) {
@@ -168,22 +165,21 @@ public class Main {
         } else {
             int leftCount = countTotalNodes(node.left);
             int rightCount = countTotalNodes(node.right);
-            return 1 + leftCount + rightCount;
+            return  1 + leftCount + rightCount;
         }
     } // End countTotalNodes()
 
     /**
      * Method Name: countTotalWords
-     *
+     * @author Duc Anh Vu
+     * Creation Date: April 6, 2021
+     * Modified Date: April 9, 2021
+     * Description: Count total of words that got input in the tree
      * @param node A node of the tree as start point
      * @return Total of words in the tree
      * Data Type: Integer
      * Dependencies: N/A
      * Throws/Exception: N/A
-     * @author Duc Anh Vu
-     * Creation Date: April 6, 2021
-     * Modified Date: April 9, 2021
-     * Description: Count total of words that got input in the tree
      */
     private static int countTotalWords(WordNode node) {
         if (node != null) {
@@ -196,23 +192,22 @@ public class Main {
 
     /**
      * Method Name: readPrintFile
-     *
+     * @author Duc Anh Vu
+     * Creation Date: April 6, 2021
+     * Modified Date: April 9, 2021
+     * Description: Read in and print out the text file.
      * @param fileName File input to read and print
      * @return Content of the file in lower case with no punctuation except apostrophe
      * Data Type: String
      * Dependencies: Scanner
      * @throws FileNotFoundException If file not found then throw error
-     * @author Duc Anh Vu
-     * Creation Date: April 6, 2021
-     * Modified Date: April 9, 2021
-     * Description: Read in and print out the text file.
      */
     public static String readPrintFile(String fileName) throws FileNotFoundException {
         String content = new Scanner(new File(fileName)).useDelimiter("\\Z").next();
         System.out.println(content);
         return content.toLowerCase().replace("\"", "").replace(".", " ").replace("-", "")
                 .replace(",", "").replace("  ", " ").replace("/", "")
-                .replace(":", "");
+                                    .replace(":", "");
     } // End readPrintFile()
 
     public static void main(String[] args) {
@@ -245,6 +240,7 @@ public class Main {
             System.out.println("File error or not found!");
             System.exit(0);
         }
+
 
 
         // Menu handle
@@ -297,7 +293,6 @@ public class Main {
         int counter;
         WordNode left;
         WordNode right;
-
         WordNode(String word) {
             this.word = word;
             counter = 1;
