@@ -38,10 +38,10 @@ public class Main {
                 break;
             if (treeContains(root, word, 0)) {
             } else {
-                treeInsert(word);  // Add string to the tree.
+                treeInsert(word);
             }
-        }  // end while
-    }
+        }  // End while
+    } // End contentToWordsBST()
 
     /**
      * Method Name: plusCount
@@ -58,7 +58,7 @@ public class Main {
      */
     private static void plusCount(WordNode node) {
         node.counter += 1;
-    }
+    } // End plusCount()
 
     /**
      * Method Name: treeInsert
@@ -77,15 +77,14 @@ public class Main {
             root = new WordNode(word);
             return;
         }
-        WordNode runner;  // Runs down the tree to find a place for newItem.
-        runner = root;   // Start at the root.
+        WordNode runner;
+        runner = root;
         while (true) {
             if (word.compareTo(runner.word) < 0) {
                 if (runner.left == null) {
                     runner.left = new WordNode(word);
                     return;
-                }
-                else
+                } else
                     runner = runner.left;
             } else {
                 if (runner.right == null) {
@@ -114,21 +113,17 @@ public class Main {
      */
     public static boolean treeContains(WordNode root, String word, int Search) {
         if (root == null) {
-            // Tree is empty, so it certainly doesn't contain item.
             return false;
         } else if (word.equals(root.word)) {
-            // Yes, the item has been found in the root node.
-            if (Search == 1) { // if it's a search for an item, want to print message
-                System.out.println("\"" + word + "\"" + " appears " + "(" + root.counter + ")" + " time(s)"); // print the number of items
-            } else { // if it's used to increase the value of counter
-                plusCount(root); // call method, increase the value of counter
+            if (Search == 1) {
+                System.out.println("\"" + word + "\"" + " appears " + "(" + root.counter + ")" + " time(s)");
+            } else {
+                plusCount(root);
             }
             return true;
         } else if (word.compareTo(root.word) < 0) {
-            // If the item occurs, it must be in the left subtree.
             return treeContains(root.left, word, Search);
         } else {
-            // If the item occurs, it must be in the right subtree.
             return treeContains(root.right, word, Search);
         }
     }  // End treeContains()
